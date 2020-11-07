@@ -1,0 +1,4 @@
+github:
+  runner:
+    os: linux
+    version: 2.273.6

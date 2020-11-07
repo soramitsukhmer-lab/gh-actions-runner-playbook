@@ -1,0 +1,10 @@
+- name: Download the latest runner package
+  uri:
+    url: https://github.com/actions/runner/releases/download/v{{ GH_RUNNER_VERSION }}/actions-runner-{{ GH_RUNNER_OS }}-x64-{{ GH_RUNNER_VERSION }}.tar.gz
+    dest: /tmp/actions-runner.tar.gz
+    follow_redirects: all
+- name: Extract the installer
+  unarchive:
+    src: /tmp/actions-runner.tar.gz
+    dest: /opt/actions-runner
+    remote_src: yes

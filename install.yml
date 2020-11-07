@@ -1,0 +1,10 @@
+---
+- name: Install GitHub Runners
+  hosts: localhost
+  vars_files:
+    - vars/aws.yml
+    - vars/github.yml
+  roles:
+    - role: aws-configure
+    - role: docker-configure
+    # - role: runner-installer
