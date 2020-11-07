@@ -1,4 +1,5 @@
 github:
   runner:
     os: linux
+    arch: x64
     version: 2.273.6
