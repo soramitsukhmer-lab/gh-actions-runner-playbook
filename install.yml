@@ -7,4 +7,4 @@
   roles:
     - role: aws-configure
     - role: docker-configure
-    # - role: runner-installer
+    - role: runner-installer

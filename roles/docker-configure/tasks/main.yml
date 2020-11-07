@@ -1,6 +1,7 @@
 - name: "Amazon: Get ECR login token"
   command: aws ecr get-login-password
   register: token
+
 - name: "Docker: Login to Amazon ECR"
   community.docker.docker_login:
     registry_url: "{{ ecr.registry }}"

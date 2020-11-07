@@ -1,4 +1,7 @@
 github:
+  org:
+    url: https://github.com/soramitsukhmer
+    token: ABBJMUOITCY23GUOUKGFLZ27U2FY4
   runner:
     os: linux
     arch: x64

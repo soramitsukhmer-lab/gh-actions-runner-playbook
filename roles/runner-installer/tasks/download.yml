@@ -1,0 +1,11 @@
+- name: Download the latest runner package
+  uri:
+    url: https://github.com/actions/runner/releases/download/v{{ github.runner.version }}/actions-runner-{{ github.runner.os }}-{{ github.runner.arch }}-{{ github.runner.version }}.tar.gz
+    dest: /tmp/actions-runner.tar.gz
+    follow_redirects: all
+
+- name: Extract the installer
+  unarchive:
+    src: /tmp/actions-runner.tar.gz
+    dest: /opt/actions-runner
+    remote_src: yes
