@@ -1,13 +1,15 @@
+- name: Generate unique identifier
+  command: uuidgen
+  register: identifier
 - name: Configure GitHub Runner
   command: ./config.sh \
     --unattended \
     --url {{ github.org.url }} \
     --token {{ github.org.token }} \
-    --name gh-runner-$RANDOM$RANDOM
+    --name gh-runner-{{ identifier.stdout }}
     --labels {{ github.runner.os }},{{ github.runner.arch }}
   args:
     chdir: /opt/actions-runner
-
 - name: Installing GitHub Runner as a service
   command: ./svc.sh install
   become: yes
