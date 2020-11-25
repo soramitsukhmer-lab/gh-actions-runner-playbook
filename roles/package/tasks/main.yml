@@ -1,0 +1,46 @@
+- name: Run the equivalent of "apt-get upgrade/update" as a separate step
+  apt:
+    upgrade: safe
+- name: Installing prerequisite packages
+  apt:
+    name:
+      - software-properties-common
+      - python3-pip
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg-agent
+      - software-properties-common
+      - qemu-guest-agent
+      - awscli
+    state: present
+    update_cache: yes
+- name: Install Docker modules for Python
+  pip:
+    name:
+      - docker
+      - docker-compose
+      - jsondiff
+- name: Add Docker GPG apt Key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+- name: Add Docker Repository
+  apt_repository:
+    repo: deb https://download.docker.com/linux/ubuntu focal stable
+    state: present
+- name: Installing prerequisite packages
+  apt:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+    state: present
+    update_cache: yes
+- name: Add the user 'github' to 'docker' group
+  user:
+    name: github
+    group: github
+    groups:
+      - github
+      - docker
