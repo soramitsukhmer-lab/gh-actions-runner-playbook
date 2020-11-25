@@ -1,0 +1,20 @@
+- name: Locating GitHub Runner service
+  command: cat .service
+  register: service
+  args:
+    chdir: /opt/actions-runner
+- name: Ensure that GitHub Runner service was installed
+  stat:
+    path: /etc/systemd/system/{{ service.stdout }}
+  register: svc
+- name: Installing GitHub Runner as a service
+  when: not svc.stat.exists
+  command: ./svc.sh install
+  become: yes
+  args:
+    chdir: /opt/actions-runner
+- name: Ensure GitHub Runner service has stated
+  become: yes
+  service:
+    name: "{{ service.stdout }}"
+    state: started
