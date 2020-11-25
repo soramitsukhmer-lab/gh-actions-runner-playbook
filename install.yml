@@ -1,10 +1,26 @@
 ---
+- name: Install prerequisite packages
+  hosts: gh-runners
+  become: yes
+  vars_files:
+    - vars/aws.yml
+    - vars/github.yml
+  roles:
+    - role: package
 - name: Install GitHub Runners
-  hosts: localhost
+  hosts: gh-runners
+  become: yes
+  vars_files:
+    - vars/aws.yml
+    - vars/github.yml
+  roles:
+    - role: runner-installer
+- name: Configure Docker and AWS Cli
+  hosts: gh-runners
   vars_files:
     - vars/aws.yml
     - vars/github.yml
   roles:
     - role: aws-configure
     - role: docker-configure
-    - role: runner-installer
+    - role: runner-configure
