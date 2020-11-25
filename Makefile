@@ -1,12 +1,19 @@
 main:
-	@echo No operation was performed!
+	@ansible-galaxy collection install -r requirements.yml
 
-deploy:
+install:
 	@ansible-playbook \
 		-i inventory.ini \
 		-u github \
 		-K \
 		install.yml
+
+runner:
+	@ansible-playbook \
+		-i inventory.ini \
+		-u github \
+		-K \
+		runner.yml
 
 reboot:
 	@ansible-playbook \
@@ -14,6 +21,3 @@ reboot:
 		-u github \
 		-K \
 		power/reboot.yml
-
-install:
-	@ansible-galaxy collection install -r requirements.yml
