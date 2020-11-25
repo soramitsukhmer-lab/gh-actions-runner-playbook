@@ -1,0 +1,8 @@
+---
+- name: Check GitHub Runners status
+  hosts: gh-runners
+  gather_facts: No
+  tasks:
+    - name: ping
+      ping:
+        data: pong

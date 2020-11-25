@@ -1,6 +1,12 @@
 main:
 	@ansible-galaxy collection install -r requirements.yml
 
+ping:
+	@ansible-playbook \
+		-i inventory.ini \
+		-u github \
+		ping.yml
+
 install:
 	@ansible-playbook \
 		-i inventory.ini \
