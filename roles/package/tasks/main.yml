@@ -40,7 +40,6 @@
 - name: Add the user 'github' to 'docker' group
   user:
     name: github
-    group: github
     groups:
-      - github
       - docker
+    append: yes
