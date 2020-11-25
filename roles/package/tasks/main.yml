@@ -43,3 +43,6 @@
     groups:
       - docker
     append: yes
+- name: Sending reboot signal
+  reboot:
+    reboot_timeout: 3600
