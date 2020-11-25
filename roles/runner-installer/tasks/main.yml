@@ -5,11 +5,3 @@
 - name: Downloading GitHub runner installer
   when: not runner.stat.exists
   import_tasks: download.yml
-
-- name: Ensure that GitHub runner service was not installed
-  stat:
-    path: /opt/actions-runner/svc.sh
-  register: svc
-- name: Installing GitHub runner
-  when: not svc.stat.exists
-  import_tasks: configure.yml
