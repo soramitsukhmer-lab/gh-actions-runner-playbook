@@ -5,21 +5,21 @@ ping:
 	@ansible-playbook \
 		-i inventory.ini \
 		-u github \
-		ping.yml
+		plays/ping.yml
 
 install:
 	@ansible-playbook \
 		-i inventory.ini \
 		-u github \
 		-K \
-		install.yml
+		plays/install.yml
 
 runner:
 	@ansible-playbook \
 		-i inventory.ini \
 		-u github \
 		-K \
-		runner.yml
+		plays/runner.yml
 
 reboot:
 	@ansible-playbook \
