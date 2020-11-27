@@ -12,14 +12,14 @@ install:
 		-i inventory.ini \
 		-u github \
 		-K \
-		plays/install.yml
+		install.yml
 
 runner:
 	@ansible-playbook \
 		-i inventory.ini \
 		-u github \
 		-K \
-		plays/runner.yml
+		runner.yml
 
 reboot:
 	@ansible-playbook \
