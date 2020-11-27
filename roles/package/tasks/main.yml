@@ -38,11 +38,13 @@
     state: present
     update_cache: yes
 - name: Add the user 'github' to 'docker' group
+  register: docker_group
   user:
     name: github
     groups:
       - docker
     append: yes
 - name: Sending reboot signal
+  when: docker_group.changed
   reboot:
     reboot_timeout: 3600
