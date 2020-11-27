@@ -1,6 +1,6 @@
 ---
 - name: Check GitHub Runners status
-  hosts: gh-runners
+  hosts: all
   gather_facts: No
   tasks:
     - name: ping
