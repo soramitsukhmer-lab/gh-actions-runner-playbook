@@ -3,7 +3,7 @@
   register: token
 
 - name: "Docker: Login to Amazon ECR"
-  community.docker.docker_login:
+  docker_login:
     registry_url: "{{ ecr.registry }}"
     username: "AWS"
     password: "{{ token.stdout }}"
