@@ -1,6 +1,6 @@
 ---
 - name: Reboot all GitHub Runners instances
-  hosts: gh-runners
+  hosts: all
   become: yes
   tasks:
     - name: Sending reboot signal
