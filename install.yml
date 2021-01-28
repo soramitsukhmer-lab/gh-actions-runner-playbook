@@ -6,4 +6,5 @@
     - vars/aws.yml
     - vars/github.yml
   roles:
+    - role: docker-prune
     - role: package
