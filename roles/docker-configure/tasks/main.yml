@@ -7,3 +7,9 @@
     registry_url: "{{ ecr.registry }}"
     username: "AWS"
     password: "{{ token.stdout }}"
+
+- name: Ensure docker deamon is running
+  service:
+    name: docker
+    state: started
+  become: true

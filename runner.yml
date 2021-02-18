@@ -16,3 +16,4 @@
     - role: aws-configure
     - role: docker-configure
     - role: runner-configure
+    - role: docker-prune

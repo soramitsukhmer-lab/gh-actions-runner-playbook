@@ -1,0 +1,6 @@
+---
+- name: System prune
+  hosts: all
+  become: yes
+  roles:
+    - role: docker-prune

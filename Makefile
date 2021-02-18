@@ -21,6 +21,13 @@ runner:
 		-K \
 		runner.yml
 
+prune:
+	@ansible-playbook \
+		-i inventory.ini \
+		-u github \
+		-K \
+		prune.yml
+
 reboot:
 	@ansible-playbook \
 		-i inventory.ini \
