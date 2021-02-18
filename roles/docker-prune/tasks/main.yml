@@ -1,4 +1,4 @@
-- name: Prune everything
+- name: "Prune everything"
   community.general.docker_prune:
     containers: yes
     images: yes
