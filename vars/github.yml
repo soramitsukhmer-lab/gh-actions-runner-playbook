@@ -1,7 +1,7 @@
 github:
   org:
     url: https://github.com/soramitsukhmer
-    token: ABBJMUOCQ2BVOW5VBAJVIYC7XXVCE
+    token: secret
   runner:
     os: linux
     arch: x64
