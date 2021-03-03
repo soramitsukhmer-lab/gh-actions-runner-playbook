@@ -6,3 +6,6 @@ github:
     os: linux
     arch: x64
     version: 2.276.1
+  owner:
+    user: ubuntu
+    group: ubuntu

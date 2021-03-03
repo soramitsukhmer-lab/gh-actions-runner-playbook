@@ -12,8 +12,8 @@
   file:
     path: /opt/actions-runner/
     state: directory
-    owner: github
-    group: github
+    owner: "{{ github.owner.user }}"
+    group: "{{ github.owner.group }}"
     mode: '0755'
 - name: Extract the installer
   unarchive:
@@ -24,6 +24,6 @@
   file:
     path: /opt/actions-runner/
     state: directory
-    owner: github
-    group: github
+    owner: "{{ github.owner.user }}"
+    group: "{{ github.owner.group }}"
     recurse: yes
