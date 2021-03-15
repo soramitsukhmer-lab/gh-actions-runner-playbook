@@ -1,4 +1,14 @@
+.PHONY: main
+
 main:
+	@echo "Receipts:"
+	@echo " - deps: Install ansible collections/roles"
+	@echo " - install: Install prerequisite packages"
+	@echo " - install-runner: Install GitHub Runners"
+	@echo " - reboot: Reboot runners"
+	@echo " - prune: Runner system prune"
+
+deps:
 	@ansible-galaxy collection install -r collections/requirements.yml
 
 ping:
@@ -14,7 +24,7 @@ install:
 		-K \
 		install.yml
 
-runner:
+install-runner:
 	@ansible-playbook \
 		-i inventory.ini \
 		-u github \
