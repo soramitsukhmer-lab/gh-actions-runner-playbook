@@ -1,3 +1,0 @@
-- name: Configure Amazon Web Services CLI
-  command: aws configure set {{ item.key }} {{ item.value }}
-  with_dict: "{{ aws }}"

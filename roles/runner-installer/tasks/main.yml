@@ -1,7 +1,0 @@
-- name: Ensure that GitHub runner was not installed
-  stat:
-    path: /opt/actions-runner
-  register: runner
-- name: Downloading GitHub runner installer
-  when: not runner.stat.exists
-  import_tasks: download.yml

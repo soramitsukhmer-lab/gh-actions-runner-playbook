@@ -1,8 +1,0 @@
-aws:
-  aws_access_key_id: AKIAQQMBHNZXMFCIU4PN
-  aws_secret_access_key: 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
-  default.region: ap-southeast-1
-  default.format: json
-
-ecr:
-  registry: 035167628910.dkr.ecr.ap-southeast-1.amazonaws.com
