@@ -1,5 +1,5 @@
 ## About
-Soramitsu Khmer's GitHub Actions Runner 
+Soramitsu Khmer's GitHub Actions Runner Playbook 
 
 ## Getting started
 
