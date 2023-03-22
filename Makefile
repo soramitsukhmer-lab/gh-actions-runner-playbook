@@ -14,6 +14,7 @@ inventory.ini:
 	@test -f "$@" || cp "inventory.ini.example" "$@"
 
 install: inventory.ini
+	@mkdir -p logs
 	@ansible-galaxy install -r requirements.yml --force
 	
 bootstrap:
