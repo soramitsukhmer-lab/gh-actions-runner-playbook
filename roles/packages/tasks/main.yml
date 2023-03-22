@@ -5,10 +5,8 @@
 - name: Installing prerequisite packages
   apt:
     name:
-      # Docker Plugins
+      # Docker Extra Plugins
       - "docker-buildx-plugin"
       - "docker-compose-plugin"
-      # GitHub Actions Runner
-      - "jq"
     state: present
     update_cache: yes
