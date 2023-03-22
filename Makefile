@@ -1,46 +1,29 @@
-.PHONY: main
+env := default
+user := root
+verbose := false
+ansible_flags := 
 
-main:
-	@echo "Receipts:"
-	@echo " - deps: Install ansible collections/roles"
-	@echo " - install: Install prerequisite packages"
-	@echo " - install-runner: Install GitHub Runners"
-	@echo " - reboot: Reboot runners"
-	@echo " - prune: Runner system prune"
+ifeq ($(verbose),true)
+	ansible_flags := -vvv
+endif
 
-deps:
-	@ansible-galaxy collection install -r collections/requirements.yml
+env:
+	@python3 -m venv env
 
-ping:
-	@ansible-playbook \
-		-i inventory.ini \
-		-u github \
-		plays/ping.yml
+inventory.ini:
+	@test -f "$@" || cp "inventory.ini.example" "$@"
 
-install:
-	@ansible-playbook \
-		-i inventory.ini \
-		-u github \
-		-K \
-		install.yml
+install: inventory.ini
+	@ansible-galaxy install -r requirements.yml --force
+	
+bootstrap:
+	@ansible-playbook $(ansible_flags) -u ${user} $@.yml
 
-install-runner:
-	@ansible-playbook \
-		-i inventory.ini \
-		-u github \
-		-K \
-		runner.yml
+runner-create:
+	@ansible-playbook $(ansible_flags) -u ${user} $@.yml
 
-prune:
-	@ansible-playbook \
-		-i inventory.ini \
-		-u github \
-		-K \
-		prune.yml
+runner-remove:
+	@ansible-playbook $(ansible_flags) -u ${user} $@.yml
 
-reboot:
-	@ansible-playbook \
-		-i inventory.ini \
-		-u github \
-		-K \
-		power/reboot.yml
+runner-delete:
+	@ansible-playbook $(ansible_flags) -u ${user} $@.yml

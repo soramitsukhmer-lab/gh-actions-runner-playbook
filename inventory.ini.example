@@ -1,4 +1,6 @@
-[gh-runners]
-192.168.0.50
-192.168.0.51
-192.168.0.52
+[actions-runner:vars]
+github_pat=...
+github_organization=...
+
+[actions-runner]
+put your runner ip address here...

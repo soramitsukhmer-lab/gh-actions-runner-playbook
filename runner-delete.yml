@@ -1,0 +1,8 @@
+---
+- name: Deleting a self-hosted runner
+  hosts: all
+  become: true
+  vars:
+    github_actions_runner_mode: "delete"
+  roles:
+    - soramitsukhmer-lab.actions-runner

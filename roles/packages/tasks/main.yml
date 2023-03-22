@@ -1,0 +1,14 @@
+- name: Run the equivalent of "apt-get upgrade/update" as a separate step
+  apt:
+    upgrade: safe
+    
+- name: Installing prerequisite packages
+  apt:
+    name:
+      # Docker Plugins
+      - "docker-buildx-plugin"
+      - "docker-compose-plugin"
+      # GitHub Actions Runner
+      - "jq"
+    state: present
+    update_cache: yes

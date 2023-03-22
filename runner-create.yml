@@ -1,0 +1,12 @@
+---
+- name: Adding a self-hosted runner
+  hosts: all
+  become: true
+  roles:
+    - soramitsukhmer-lab.actions-runner
+  tasks:
+    - name: Ensure github user added to the docker group.
+      user:
+        name: "{{ github_actions_runner_user }}"
+        groups: docker
+        append: true

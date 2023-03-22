@@ -1,0 +1,19 @@
+---
+- name: Adding a self-hosted runner
+  hosts: all
+  become: true
+  vars:
+    pip_install_packages:
+      - name: docker
+      - name: jsondiff
+    docker_install_compose: false
+    docker_install_compose_plugin: true
+  pre_tasks:
+    - name: Install unzip
+      ansible.builtin.package:
+        name: unzip
+        state: present
+  roles:
+    - soramitsukhmer-lab.pip
+    - soramitsukhmer-lab.docker
+    - packages
