@@ -47,7 +47,6 @@ e.g.:
 There are 3 types of playbook available.
 
 - `runner-create`: Automate Configuring Self-Hosted Runners
-- `runner-remove`: Removing Self-Hosted Runners (Uninstall service only!)
 - `runner-delete`: Delete Self-Hosted Runners (Destroy and remove everything!)
 
 To run a playbook, simply run `make [playbook-name]`.

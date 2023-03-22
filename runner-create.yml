@@ -12,3 +12,9 @@
         name: "{{ github_actions_runner_user }}"
         groups: docker
         append: true
+    - name: Allow the github user to run any commands with sudo
+      community.general.sudoers:
+        name: github-sudoer
+        user: github
+        commands: ALL
+        nopassword: true

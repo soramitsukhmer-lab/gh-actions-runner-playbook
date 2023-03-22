@@ -1,8 +1,0 @@
----
-- name: Removing a self-hosted runner
-  hosts: all
-  become: true
-  vars:
-    github_actions_runner_mode: "remove"
-  roles:
-    - soramitsukhmer-lab.actions-runner

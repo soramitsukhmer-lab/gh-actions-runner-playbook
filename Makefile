@@ -1,9 +1,15 @@
 env := default
 user := root
+
+debug := false
 verbose := false
 ansible_flags := 
 
 ifeq ($(verbose),true)
+	ansible_flags := -vv
+endif
+
+ifeq ($(debug),true)
 	ansible_flags := -vvv
 endif
 
@@ -16,15 +22,12 @@ inventory.ini:
 install: inventory.ini
 	@mkdir -p logs
 	@ansible-galaxy install -r requirements.yml --force
-	
+
 bootstrap:
 	@ansible-playbook $(ansible_flags) -u ${user} $@.yml
 
 runner-create:
 	@ansible-playbook $(ansible_flags) -u ${user} $@.yml
-
-runner-remove:
-	@ansible-playbook $(ansible_flags) -u ${user} $@.yml
-
+	
 runner-delete:
 	@ansible-playbook $(ansible_flags) -u ${user} $@.yml
