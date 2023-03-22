@@ -46,9 +46,9 @@ e.g.:
 
 There are 3 types of playbook available.
 
-- `runner-create.yml`: Automate Configuring Self-Hosted Runners
-- `runner-remove.yml`: Removing Self-Hosted Runners (Uninstall service only!)
-- `runner-delete.yml`: Delete Self-Hosted Runners (Destroy and remove everything!)
+- `runner-create`: Automate Configuring Self-Hosted Runners
+- `runner-remove`: Removing Self-Hosted Runners (Uninstall service only!)
+- `runner-delete`: Delete Self-Hosted Runners (Destroy and remove everything!)
 
 To run a playbook, simply run `make [playbook-name]`.
 
