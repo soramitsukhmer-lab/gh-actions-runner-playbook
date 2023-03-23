@@ -80,5 +80,5 @@ e.g.:
 make runner-create
 ```
 
-> **Important**  
+> **Warning**  
 > You can only run the playbook once for each type.
