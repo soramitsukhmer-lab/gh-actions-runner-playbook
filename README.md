@@ -1,3 +1,5 @@
+![github-graph](https://github.com/actions/runner/blob/main/docs/res/github-graph.png)
+
 ## About
 Soramitsu Khmer's GitHub Actions Runner Playbook 
 
