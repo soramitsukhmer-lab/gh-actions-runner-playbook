@@ -7,12 +7,12 @@
   roles:
     - soramitsukhmer-lab.actions-runner
   tasks:
-    - name: Ensure github user added to the docker group.
-      user:
+    - name: "Ensure github user added to the docker group"
+      ansible.builtin.user:
         name: "{{ github_actions_runner_user }}"
-        groups: docker
+        groups: "docker"
         append: true
-    - name: Allow the github user to run any commands with sudo
+    - name: "Allow the github user to run any commands with sudo"
       community.general.sudoers:
         name: github-sudoer
         user: github

@@ -8,12 +8,20 @@
       - name: jsondiff
     docker_install_compose: false
     docker_install_compose_plugin: true
+  roles:
+    - soramitsukhmer-lab.pip
+    - soramitsukhmer-lab.docker
+    - packages
   pre_tasks:
     - name: Install unzip
       ansible.builtin.package:
         name: unzip
         state: present
-  roles:
-    - soramitsukhmer-lab.pip
-    - soramitsukhmer-lab.docker
-    - packages
+  tasks:
+    - name: "Run docker system prune on weekly basis"
+      ansible.builtin.cron:
+        name: "Docker system prune"
+        state: present
+        special_time: "weekly"
+        job: "docker system prune --all --volumes"
+        user: github
