@@ -63,8 +63,7 @@ This will ensure all dependencies and packages are installed and configured prop
 
 - Run `docker system prune` on a weekly basis
 
-> **Note**  
-> You can run this playbook anytime you want to update the packages or cron jobs.
+> **Note**: You can run this playbook anytime you want to update the packages or cron jobs.
 
 ## Operation Guide
 
@@ -80,5 +79,4 @@ e.g.:
 make runner-create
 ```
 
-> **Warning**  
-> You can only run the playbook once for each type.
+> **Warning**: You can only run the playbook once for each type.
