@@ -13,6 +13,9 @@ ifeq ($(debug),true)
 	ansible_flags := -vvv
 endif
 
+.PHONY: it
+it: env install inventory.ini
+
 env:
 	@python3 -m venv env
 
