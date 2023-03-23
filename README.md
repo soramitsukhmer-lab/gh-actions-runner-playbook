@@ -1,4 +1,6 @@
-![github-graph](https://github.com/actions/runner/blob/main/docs/res/github-graph.png)
+<p align="center">
+  <img src="docs/res/github-graph.png">
+</p>
 
 ## About
 Soramitsu Khmer's GitHub Actions Runner Playbook 
