@@ -11,13 +11,19 @@
   roles:
     - soramitsukhmer-lab.pip
     - soramitsukhmer-lab.docker
-    - packages
-  pre_tasks:
-    - name: Install unzip
-      ansible.builtin.package:
-        name: unzip
-        state: present
   tasks:
+    - name: Run the equivalent of "apt-get upgrade/update" as a separate step
+      ansible.builtin.apt:
+        upgrade: safe
+    - name: Installing prerequisite packages
+      ansible.builtin.apt:
+        name:
+          - unzip
+          # Docker Extra Plugins
+          - "docker-buildx-plugin"
+          - "docker-compose-plugin"
+        state: present
+        update_cache: true
     - name: "Run docker system prune on weekly basis"
       ansible.builtin.cron:
         name: "Docker system prune"

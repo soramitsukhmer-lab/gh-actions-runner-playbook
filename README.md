@@ -42,6 +42,29 @@ e.g.:
 169.84.197.134
 ```
 
+## Bootstrap the server
+
+Before you can proceed, you will need to bootstrap the server by running the following command:
+
+```sh
+make bootstrap
+```
+
+This will ensure all dependencies and packages are installed and configured properly.
+
+**Packages**:
+
+- docker
+- docker-compose
+- docker-compose-plugin
+- docker-buildx-plugin
+
+**Cron**:
+
+- Run `docker system prune` on a weekly basis
+
+> Note: You can run this playbook anytime you want to update the packages or cron jobs.
+
 ## Operation Guide
 
 There are 3 types of playbook available.
@@ -55,3 +78,5 @@ e.g.:
 ```sh
 make runner-create
 ```
+
+> Important: You can only run the playbook once for each type.

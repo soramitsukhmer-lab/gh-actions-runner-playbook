@@ -3,12 +3,10 @@ roles:
     src: https://github.com/soramitsukhmer-lab/ansible-role-pip.git
     version: 2.2.0
     scm: git
-
   - name: soramitsukhmer-lab.docker
     src: https://github.com/soramitsukhmer-lab/ansible-role-docker.git
     version: 6.1.0
     scm: git
-
   - name: soramitsukhmer-lab.actions-runner
     src: https://github.com/soramitsukhmer-lab/ansible-role-actions-runner
     version: main
