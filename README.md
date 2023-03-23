@@ -32,11 +32,11 @@ Edit `inventory.ini` and update the following variables:
 - `github_pat`: your personal access token
 - `github_organization`: the organization which the runner will be deployed to
 
-Then add the IP Address of your runner instances under `[actions-runner]` property.
+Then add the IP Address of your runner instances under `[runners]` property.
 
 e.g.:
 ```ini
-[actions-runner]
+[runners]
 169.89.33.159
 166.190.81.215
 169.84.197.134
@@ -63,7 +63,8 @@ This will ensure all dependencies and packages are installed and configured prop
 
 - Run `docker system prune` on a weekly basis
 
-> Note: You can run this playbook anytime you want to update the packages or cron jobs.
+> **Note**  
+> You can run this playbook anytime you want to update the packages or cron jobs.
 
 ## Operation Guide
 
@@ -79,4 +80,5 @@ e.g.:
 make runner-create
 ```
 
-> Important: You can only run the playbook once for each type.
+> **Important**  
+> You can only run the playbook once for each type.
