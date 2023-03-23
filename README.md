@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/res/github-graph.png">
+  <img src="https://github.com/actions/runner/blob/main/docs/res/github-graph.png">
 </p>
 
 ## About
