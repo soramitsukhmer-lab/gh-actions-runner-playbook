@@ -25,8 +25,9 @@ source env/bin/activate
 @pip install -r requirements.txt
 ```
 
-Once done, reload or restart your terminal.  
-You may need to run `source env/bin/activate` to activate the workspace everytime you run a new terminal session.
+Once done, reload or restart your terminal.
+
+> **Note**: You may need to run `source env/bin/activate` to activate the workspace everytime you run a new terminal session.
 
 ### Install Role and Collection
 
