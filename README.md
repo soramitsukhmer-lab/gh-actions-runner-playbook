@@ -91,4 +91,7 @@ e.g.:
 make runner-create
 ```
 
-> **Warning**: You can only run the playbook once for each type.
+We also provides utilities playbook:
+
+- `ping`: Send a ping to the runner instances
+- `reboot`: Reboot the runner instances
