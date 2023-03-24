@@ -21,7 +21,6 @@
           - unzip
           # Docker Extra Plugins
           - "docker-buildx-plugin"
-          - "docker-compose-plugin"
         state: present
         update_cache: true
     - name: "Run docker system prune on weekly basis"
