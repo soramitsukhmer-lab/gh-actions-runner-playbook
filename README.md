@@ -17,9 +17,16 @@ This uses Python `venv` to help setup a local workspace.
 ```sh
 # Initialize venv
 python3 -m venv env
+
 # Activate venv
 source env/bin/activate
+
+# Install ansible
+@pip install -r requirements.txt
 ```
+
+Once done, reload or restart your terminal.  
+You may need to run `source env/bin/activate` to activate the workspace everytime you run a new terminal session.
 
 ### Install Role and Collection
 

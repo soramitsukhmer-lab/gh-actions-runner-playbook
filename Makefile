@@ -14,18 +14,14 @@ ifeq ($(debug),true)
 endif
 
 .PHONY: it
-it: env install inventory.ini
-
-env:
-	@python3 -m venv $@
-	@pip install -r requirements.txt
-
-inventory.ini:
-	@test -f "$@" || cp "inventory.ini.example" "$@"
+it: install inventory.ini
 
 install: inventory.ini
 	@mkdir -p logs
 	@ansible-galaxy install -r requirements.yml --force
+
+inventory.ini:
+	@test -f "$@" || cp "inventory.ini.example" "$@"
 
 # Plays
 bootstrap:
