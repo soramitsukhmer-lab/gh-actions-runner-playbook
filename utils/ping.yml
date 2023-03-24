@@ -1,0 +1,6 @@
+- name: Ping all self-hosted runner
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Ping
+      ansible.builtin.ping:

@@ -17,7 +17,8 @@ endif
 it: env install inventory.ini
 
 env:
-	@python3 -m venv env
+	@python3 -m venv $@
+	@pip install -r requirements.txt
 
 inventory.ini:
 	@test -f "$@" || cp "inventory.ini.example" "$@"
@@ -26,11 +27,19 @@ install: inventory.ini
 	@mkdir -p logs
 	@ansible-galaxy install -r requirements.yml --force
 
+# Plays
 bootstrap:
-	@ansible-playbook $(ansible_flags) -u ${user} $@.yml
+	@ansible-playbook $(ansible_flags) -u ${user} plays/$@.yml
 
 runner-create:
-	@ansible-playbook $(ansible_flags) -u ${user} $@.yml
-	
+	@ansible-playbook $(ansible_flags) -u ${user} plays/$@.yml
+
 runner-delete:
-	@ansible-playbook $(ansible_flags) -u ${user} $@.yml
+	@ansible-playbook $(ansible_flags) -u ${user} plays/$@.yml
+
+# Utils
+ping:
+	@ansible-playbook $(ansible_flags) -u ${user} utils/$@.yml
+
+reboot:
+	@ansible-playbook $(ansible_flags) -u ${user} utils/$@.yml

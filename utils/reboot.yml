@@ -1,0 +1,10 @@
+- name: Reboot all self-hosted runner
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Ensure all self-hosted runner are rebooted
+      ansible.builtin.reboot:
+        reboot_timeout: 600
+        post_reboot_delay: 120
+        reboot_command: /sbin/shutdown -r +1 "Ansible Reboot"
+        test_command: /bin/true
