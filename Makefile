@@ -24,18 +24,18 @@ inventory.ini:
 	@test -f "$@" || cp "inventory.ini.example" "$@"
 
 # Plays
-bootstrap:
-	@ansible-playbook $(ansible_flags) -u ${user} plays/$@.yml
+plays/bootstrap:
+	@ansible-playbook $(ansible_flags) -u ${user} $@.yml
 
-runner-create:
-	@ansible-playbook $(ansible_flags) -u ${user} plays/$@.yml
+plays/runner-create:
+	@ansible-playbook $(ansible_flags) -u ${user} $@.yml
 
-runner-delete:
-	@ansible-playbook $(ansible_flags) -u ${user} plays/$@.yml
+plays/runner-delete:
+	@ansible-playbook $(ansible_flags) -u ${user} $@.yml
 
 # Utils
-ping:
-	@ansible-playbook $(ansible_flags) -u ${user} utils/$@.yml
+utils/ping:
+	@ansible-playbook $(ansible_flags) -u ${user} $@.yml
 
-reboot:
-	@ansible-playbook $(ansible_flags) -u ${user} utils/$@.yml
+utils/reboot:
+	@ansible-playbook $(ansible_flags) -u ${user} $@.yml
