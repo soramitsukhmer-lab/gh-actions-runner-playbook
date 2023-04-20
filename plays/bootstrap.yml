@@ -23,10 +23,3 @@
           - "docker-buildx-plugin"
         state: present
         update_cache: true
-    - name: "Run docker system prune on weekly basis"
-      ansible.builtin.cron:
-        name: "Docker system prune"
-        state: present
-        special_time: "weekly"
-        job: "docker system prune --all --volumes"
-        user: github

@@ -14,7 +14,7 @@
         append: true
     - name: "Allow the github user to run any commands with sudo"
       community.general.sudoers:
-        name: github-sudoer
-        user: github
+        name: "{{ github_actions_runner_user }}-sudoer"
+        user: "{{ github_actions_runner_user }}"
         commands: ALL
         nopassword: true
