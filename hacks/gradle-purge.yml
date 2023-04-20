@@ -2,7 +2,13 @@
 - name: Cleanup gradle cache
   hosts: all
   tasks:
-    - name: Ensure gradle cache is cleaned
+    - name: Removing ~/.gradle directory
       ansible.builtin.file:
-        path: /home/github/.gradle
+        path: "/home/{{ github_actions_runner_user }}/.gradle"
+        state: absent
+
+    # This directory is created by the "gradle/gradle-build-action" action
+    - name: Removing "~/gradle-installations" directory
+      ansible.builtin.file:
+        path: "/home/{{ github_actions_runner_user }}/gradle-installations"
         state: absent
