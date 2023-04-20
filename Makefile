@@ -36,6 +36,7 @@ $(eval $(call run_playbook, plays/runner-create.yml))
 $(eval $(call run_playbook, plays/runner-delete.yml))
 
 # Utils
+$(eval $(call run_playbook, utils/cron.yml))
 $(eval $(call run_playbook, utils/ping.yml))
 $(eval $(call run_playbook, utils/reboot.yml))
 

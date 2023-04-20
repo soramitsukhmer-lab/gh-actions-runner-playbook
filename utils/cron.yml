@@ -1,0 +1,11 @@
+- name: Setup cron job on all self-hosted runner
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: "Run docker system prune on weekly basis"
+      ansible.builtin.cron:
+        name: "Docker system prune"
+        state: present
+        special_time: "weekly"
+        job: "docker system prune --all --volumes"
+        user: "{{ github_actions_runner_user }}"
