@@ -1,0 +1,8 @@
+---
+- name: Cleanup gradle cache
+  hosts: all
+  tasks:
+    - name: Ensure gradle cache is cleaned
+      ansible.builtin.file:
+        path: /home/github/.gradle/caches
+        state: absent

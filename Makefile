@@ -39,3 +39,10 @@ utils/ping:
 
 utils/reboot:
 	@ansible-playbook $(ansible_flags) -u ${user} $@.yml
+
+# Hacks
+hacks/github-ssh-keys:
+	@ansible-playbook $(ansible_flags) -u ${user} $@.yml
+
+hacks/gradle-cache-clean.yml:
+	@ansible-playbook $(ansible_flags) -u ${user} $@.yml

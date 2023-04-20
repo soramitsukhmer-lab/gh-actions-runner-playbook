@@ -1,0 +1,12 @@
+# At approximately 05:00 UTC on March 24, out of an abundance of caution,
+# GitHub replaced their RSA SSH host key used to secure Git operations for GitHub.com.
+#
+# https://github.blog/2023-03-23-we-updated-our-rsa-ssh-host-key/
+---
+- name: Remove github.com from known_hosts
+  hosts: all
+  tasks:
+    - name: Ensure all self-hosted runner removed github.com from known_hosts
+      ansible.builtin.known_hosts:
+        name: github.com
+        state: absent
