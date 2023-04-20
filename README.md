@@ -3,7 +3,7 @@
 </p>
 
 ## About
-Soramitsu Khmer's GitHub Actions Runner Playbook 
+Automate GitHub Actions Runner Deployment with Ansible Playbook
 
 ## Getting started
 
