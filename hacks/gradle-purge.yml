@@ -4,5 +4,5 @@
   tasks:
     - name: Ensure gradle cache is cleaned
       ansible.builtin.file:
-        path: /home/github/.gradle/caches
+        path: /home/github/.gradle
         state: absent
