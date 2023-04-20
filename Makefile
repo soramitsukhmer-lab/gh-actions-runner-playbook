@@ -23,26 +23,22 @@ install: inventory.ini
 inventory.ini:
 	@test -f "$@" || cp "inventory.ini.example" "$@"
 
+# Functions
+define run_playbook
+.PHONY: $(1)
+$(1):
+	@ansible-playbook $(ansible_flags) -u ${user} $$@
+endef
+
 # Plays
-plays/bootstrap:
-	@ansible-playbook $(ansible_flags) -u ${user} $@.yml
-
-plays/runner-create:
-	@ansible-playbook $(ansible_flags) -u ${user} $@.yml
-
-plays/runner-delete:
-	@ansible-playbook $(ansible_flags) -u ${user} $@.yml
+$(eval $(call run_playbook, plays/bootstrap.yml))
+$(eval $(call run_playbook, plays/runner-create.yml))
+$(eval $(call run_playbook, plays/runner-delete.yml))
 
 # Utils
-utils/ping:
-	@ansible-playbook $(ansible_flags) -u ${user} $@.yml
-
-utils/reboot:
-	@ansible-playbook $(ansible_flags) -u ${user} $@.yml
+$(eval $(call run_playbook, utils/ping.yml))
+$(eval $(call run_playbook, utils/reboot.yml))
 
 # Hacks
-hacks/github-ssh-keys:
-	@ansible-playbook $(ansible_flags) -u ${user} $@.yml
-
-hacks/gradle-cache-clean.yml:
-	@ansible-playbook $(ansible_flags) -u ${user} $@.yml
+$(eval $(call run_playbook, hacks/github-ssh-keys.yml))
+$(eval $(call run_playbook, hacks/gradle-cache-clean.yml))
