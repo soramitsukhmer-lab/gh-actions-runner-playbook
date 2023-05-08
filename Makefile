@@ -33,7 +33,7 @@ endef
 # Plays
 $(eval $(call run_playbook, plays/bootstrap.yml))
 $(eval $(call run_playbook, plays/runner-create.yml))
-$(eval $(call run_playbook, plays/runner-delete.yml))
+$(eval $(call run_playbook, plays/runner-remove.yml))
 
 # Utils
 $(eval $(call run_playbook, utils/cron.yml))
