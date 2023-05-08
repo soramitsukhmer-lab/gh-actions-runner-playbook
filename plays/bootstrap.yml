@@ -1,4 +1,18 @@
 ---
+- name: Update and install prerequisite packages
+  hosts: all
+  become: true
+  tasks:
+    - name: Run the equivalent of "apt-get upgrade/update" as a separate step
+      ansible.builtin.apt:
+        upgrade: safe
+    - name: Installing prerequisite packages
+      ansible.builtin.apt:
+        name:
+          - unzip
+        state: present
+        update_cache: true
+
 - name: Bootstrapping a self-hosted runner
   hosts: all
   become: true
@@ -12,14 +26,9 @@
     - soramitsukhmer-lab.pip
     - soramitsukhmer-lab.docker
   tasks:
-    - name: Run the equivalent of "apt-get upgrade/update" as a separate step
-      ansible.builtin.apt:
-        upgrade: safe
-    - name: Installing prerequisite packages
+    - name: Installing Docker Extra Plugins
       ansible.builtin.apt:
         name:
-          - unzip
-          # Docker Extra Plugins
           - "docker-buildx-plugin"
         state: present
         update_cache: true
