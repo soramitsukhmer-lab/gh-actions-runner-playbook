@@ -6,6 +6,7 @@
     - name: Run the equivalent of "apt-get upgrade/update" as a separate step
       ansible.builtin.apt:
         upgrade: safe
+
     - name: Installing prerequisite packages
       ansible.builtin.apt:
         name:
@@ -13,13 +14,27 @@
         state: present
         update_cache: true
 
-    - name: Installing GitHub prerequisite packages
+- name: Update and install GitHub prerequisite packages
+  hosts: all
+  become: true
+  tasks:
+    - name: Add yarn public key
+      ansible.builtin.apt_key:
+        url: https://dl.yarnpkg.com/debian/pubkey.gpg
+        state: present
+
+    - name: Add yarn apt repository
+      ansible.builtin.apt_repository:
+        repo: deb https://dl.yarnpkg.com/debian/ stable main
+        state: present
+
+    - name: Ensure yarn is installed
       ansible.builtin.apt:
-        name:
-          - yarn
+        name: yarn
         state: present
         update_cache: true
         install_recommends: false
+
 
 - name: Bootstrapping a self-hosted runner
   hosts: all
