@@ -1,0 +1,13 @@
+---
+- name: Cleanup NPM cache
+  hosts: all
+  tasks:
+    - name: Removing ~/.cache/yarn directory
+      ansible.builtin.file:
+        path: "/home/{{ github_actions_runner_user }}/.cache/yarn"
+        state: absent
+
+    - name: Removing ~/.cache/Cypress directory
+      ansible.builtin.file:
+        path: "/home/{{ github_actions_runner_user }}/.cache/Cypress"
+        state: absent
