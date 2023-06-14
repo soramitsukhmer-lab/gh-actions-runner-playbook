@@ -43,5 +43,6 @@ $(eval $(call run_playbook, utils/reboot.yml))
 
 # Hacks
 $(eval $(call run_playbook, hacks/github-ssh-keys.yml))
+$(eval $(call run_playbook, hacks/purge-docker.yml))
 $(eval $(call run_playbook, hacks/purge-gradle.yml))
 $(eval $(call run_playbook, hacks/purge-npm.yml))

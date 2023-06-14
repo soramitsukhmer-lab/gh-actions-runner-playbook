@@ -1,0 +1,69 @@
+---
+- name: Purge Docker
+  hosts: all
+  tasks:
+    # Get all running containers
+    - name: Get all running containers
+      ansible.builtin.command: docker ps -aq
+      register: running_containers
+      changed_when: false
+      failed_when: false
+
+    # Stop all running containers
+    - name: Stop all running containers
+      ansible.builtin.command: docker stop {{ item }}
+      with_items: "{{ running_containers.stdout_lines }}"
+      when: running_containers.stdout_lines | length > 0
+      changed_when: false
+      failed_when: false
+
+    # Get all volumes
+    - name: Get all volumes
+      ansible.builtin.command: docker volume ls -q
+      register: volumes
+      changed_when: false
+      failed_when: false
+
+    # Remove all volumes
+    - name: Remove all volumes
+      ansible.builtin.command: docker volume rm {{ item }} -f
+      with_items: "{{ volumes.stdout_lines }}"
+      when: volumes.stdout_lines | length > 0
+      changed_when: false
+      failed_when: false
+
+    # Get all networks
+    - name: Get all networks
+      ansible.builtin.command: docker network ls -q
+      register: networks
+      changed_when: false
+      failed_when: false
+
+    # Remove all networks
+    - name: Remove all networks
+      ansible.builtin.command: docker network rm {{ item }} -f
+      with_items: "{{ networks.stdout_lines }}"
+      when: networks.stdout_lines | length > 0
+      changed_when: false
+      failed_when: false
+
+    # Get all images
+    - name: Get all images
+      ansible.builtin.command: docker images -q
+      register: images
+      changed_when: false
+      failed_when: false
+
+    # Remove all images
+    - name: Remove all images
+      ansible.builtin.command: docker rmi {{ item }} --force
+      with_items: "{{ images.stdout_lines }}"
+      when: images.stdout_lines | length > 0
+      changed_when: false
+      failed_when: false
+
+    # Run docker system prune
+    - name: Run docker system prune
+      ansible.builtin.command: docker system prune -af
+      changed_when: false
+      failed_when: false
